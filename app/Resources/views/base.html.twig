@@ -13,6 +13,19 @@
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    {% block header %}
+                <div class="top-bar">
+                    <div class="row">
+                        <div class="top-bar-right">
+                                <form action="{{ path('product_list')}}" method="get">
+                                <input type="search" placeholder="Search">
+                                <button type="submit" class="button">Search</button>
+                                </form>
+                        </div>
+                    </div>
+                </div>
+                <br>
+    {% endblock %}
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
