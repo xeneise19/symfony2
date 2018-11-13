@@ -14,9 +14,39 @@ class ProductController extends Controller
 
 	public function product_view($id)
 	{
-			$productos= $this->getDoctrine()
+		$this->get('app.cart');
+			$producto= $this->getDoctrine()
     	->getRepository('ProductoBundle:Producto')
     	->find($id);
-        return $this->render('ProductoBundle:Default:view.html.twig',['producto'=>$productos]);
+    	//echo json_encode($productos);
+        return $this->render('ProductoBundle:Default:view.html.twig',['producto'=>$producto]);
+	}
+
+	/**
+     * @Route("/product/cart/add/{id}/quantity/{quantity}", name="product_add_cart")
+     */
+
+	public function addToCartAction($id,$quantity){
+		$producto= $this->getDoctrine()
+    	->getRepository('ProductoBundle:Producto')
+    	->find($id);
+
+    	if(null===$producto){
+    		throw new \Exception("Product not found");
+    	}
+
+    	$this->get('app.cart')->add($producto);
+    	die();
+	}
+
+	/**
+     * @Route("/product/cart/view", name="product_view_cart")
+     */
+
+	public function viewCartAction(){
+		var_dump($this->get('app.cart')
+		->get(1)
+		);
+		die();
 	}
 }
