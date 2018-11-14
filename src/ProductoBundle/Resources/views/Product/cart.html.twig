@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="checkout-summary">
+  <div class="checkout-summary-title">
+    <h5>Your Order</h5>
+    <h5>2 Items</h5>
+  </div>
+{% for product in products %}
+  <div class="checkout-summary-item">
+    <img src="">
+    <div class="item-name">
+      <a>{{ product.name }}</a>
+      <p><span class="title">Stock: </span>{{ product.stock }}</p>
+    </div>
+    <div class="item-price">
+      <p class="title">{{ product.price }}</p>
+      <a href="#">Remove</a>
+    </div>
+  </div>
+  {% endfor %}
+  <div class="checkout-summary-details">
+    <div class="left">
+      <p><strong>Subtotal:</strong></p>
+      <p><strong>Tax:</strong></p>
+      <p><strong>Total:</strong></p>
+    </div>
+    <div class="right">
+      <p>$10.99</p>
+      <p>$2.00</p>
+      <p>$12.99</p>
+    </div>
+  </div>
+  <button class="button expanded">Proceed to Checkout</button>
+</div>
+
+
+{% endblock %}

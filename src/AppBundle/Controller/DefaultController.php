@@ -3,10 +3,10 @@
 namespace AppBundle\Controller;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller as sfController;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class DefaultController extends sfController
 {
     /**
      * @Route("/", name="homepage")
@@ -22,9 +22,10 @@ class DefaultController extends Controller
     /**
      * @Route("/test/{id}", name="testpage")
      */
-    public function testAction($id)
+
+    public function test($id)
     {
-        var_dump($id);
+        echo "<h1>$id</h1>";
         die();
     }
 }

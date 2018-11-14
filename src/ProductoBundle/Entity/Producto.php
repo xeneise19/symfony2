@@ -13,6 +13,16 @@ use ecommarg\cart\ProductInterface;
  */
 class Producto implements ProductInterface
 {
+
+    public function jsonSerialize()
+    {
+        return [
+            'id'=>$this->getId(),
+            'name'=>$this->getName(),
+            'price'=>$this->getPrice(),
+            'stock'=>$this->getStock()
+        ];
+    }
     /**
      * @var int
      *
@@ -124,15 +134,6 @@ class Producto implements ProductInterface
     public function getStock()
     {
         return $this->stock;
-    }
-
-    public function jsonSerialize(){
-        return [
-                    'id'=>$this->getID(),
-                    'name'=>$this->getName(),
-                    'price'=>$this->getPrice(),
-                    'stock'=>$this->getStock()
-                ];
     }
 }
 

@@ -13,11 +13,22 @@ Class Cart implements CartInterface{
 	}
 
 	public function add(Product $producto){
-		$this->adapter->set($producto->getId(),json_encode($producto));
+		$this->adapter->set(
+			$producto->getId(),
+			json_encode($producto)
+		);
 	}
 
 	public function get($id){
 		return $this->adapter->get($id);
+	}
+
+	public function getAll(){
+		return $this->adapter->getAll();
+	}
+
+	public function replace($array){
+		return $this->adapter->replace($array);
 	}
 
 }

@@ -44,8 +44,19 @@ class ProductController extends Controller
      */
 
 	public function viewCartAction(){
+		$cartService=$this->get('app.cart');
+		$products=$cartService->getAll();
+
+		return $this->render('ProductoBundle:Product:cart.html.twig',['products'=>$products]);
+	}
+
+	/**
+     * @Route("/product/cart/view/all", name="product_view_all_cart")
+     */
+
+	public function viewAllCartAction(){
 		var_dump($this->get('app.cart')
-		->get(1)
+		->getAll()
 		);
 		die();
 	}

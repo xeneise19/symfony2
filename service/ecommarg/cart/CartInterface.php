@@ -10,4 +10,7 @@ Interface CartInterface{
 
 	public function get($id);
 
+	public function getAll();
+
+	public function replace($array);
 }

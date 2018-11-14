@@ -7,28 +7,31 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 class TestController extends Controller
 {
-
+	//controlador forma recomendada
 	/**
-	* @Route("/test",name="AppBundle:TestController:indexAction")
+	*@Route("/test" , name="AppBundle:testController:index")
 	*/
-
 	public function indexAction()
 	{
-		return $this->render('test/index.html.twig',
-			[
-			'nombre'=>'Juan',
-			'apellido'=>'Perez',
-			'productos'=>[
-							[
-							'nombre'=>'Televisor',
+		//enviar renderizacion
+		//toma dos parametros el template y los datos enviados
+		return $this->render(
+				//'AppBundle:Test/index.html.twig' para cuado se usa otro bundle
+				'test/index.html.twig',
+				[
+					'nombre'=>'Juan Manuel',
+					'apellido'=>'Ramon velez',
+					'productos'=>[
+						[
+							'nombre'=>'televisor',
 							'precio'=>'19000'
-							],
-							[
-							'nombre'=>'Cafetera',
-							'precio'=>'4500'
-							]
+						],
+						[
+							'nombre'=>'telefono',
+							'precio'=>'4000'
 						]
-			]
+					]
+				]
 			);
 	}
 }
